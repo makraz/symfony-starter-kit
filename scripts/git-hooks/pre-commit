@@ -1,0 +1,30 @@
+#!/bin/bash
+
+# Pre-commit hook to run PHPStan and PHP-CS-Fixer
+
+# Define paths and commands
+PHPSTAN_COMMAND="ddev php vendor/bin/phpstan analyse"
+PHPCSFIXER_COMMAND="ddev php vendor/bin/php-cs-fixer check --diff"
+
+# Run PHPStan
+echo "Running PHPStan..."
+$PHPSTAN_COMMAND
+PHPSTAN_EXIT_CODE=$?
+
+if [ $PHPSTAN_EXIT_CODE -ne 0 ]; then
+  echo "PHPStan found issues. Commit aborted."
+  exit 1
+fi
+
+# Run PHP-CS-Fixer (check only)
+echo "Running PHP-CS-Fixer..."
+$PHPCSFIXER_COMMAND
+PHPCSFIXER_EXIT_CODE=$?
+
+if [ $PHPCSFIXER_EXIT_CODE -ne 0 ]; then
+  echo "PHP-CS-Fixer found issues. Run 'ddev php vendor/bin/php-cs-fixer fix' to fix them. Commit aborted."
+  exit 1
+fi
+
+echo "Pre-commit checks passed. Proceeding with commit."
+exit 0
