@@ -21,6 +21,7 @@
         "symfony/monolog-bundle": "^3.10",
         "symfony/notifier": "7.2.*",
         "symfony/runtime": "7.2.*",
+        "symfony/scheduler": "7.2.*",
         "symfony/security-bundle": "7.2.*",
         "symfony/twig-bundle": "7.2.*",
         "symfony/yaml": "7.2.*"
