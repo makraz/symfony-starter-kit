@@ -304,5 +304,8 @@
         "files": [
             "config/packages/zenstruck_foundry.yaml"
         ]
+    },
+    "zenstruck/mailer-test": {
+        "version": "v1.4.2"
     }
 }
