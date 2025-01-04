@@ -1,0 +1,9 @@
+parameters:
+    level: 9
+    parallel:
+        processTimeout: 300.0
+    paths:
+        - bin/
+        - config/
+        - src/
+        - tests/
